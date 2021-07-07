@@ -3,6 +3,7 @@ import "./Message.css";
 import { Avatar } from "@material-ui/core";
 import { useSelector } from "react-redux";
 import { selectUser } from "./features/userSlice";
+import * as timeago from "timeago.js";
 
 const Message = forwardRef(
   (
@@ -17,7 +18,9 @@ const Message = forwardRef(
       >
         <Avatar src={photo} className="message_photo" />
         <p>{message}</p>
-        <small> {new Date(timestamp?.toDate()).toLocaleString()} </small>
+        <small>
+          {timeago.format(new Date(timestamp?.toDate()).toLocaleString())};
+        </small>
       </div>
     );
   }
